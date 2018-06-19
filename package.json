@@ -5,14 +5,14 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "lint": "eslint **/*.js --quiet",
     "fix": "eslint --fix .",
-    "test": "npm run lint && make test"
+    "test": "make test"
   },
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
     "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
     "dotenv": "^6.0.0",
     "eslint": "^4.19.1",
     "eslint-config-prettier": "^2.9.0",

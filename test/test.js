@@ -1,21 +1,24 @@
-var expect = require("chai").expect;
+process.env.NODE_ENV = "test";
 
-var multiply = function(x, y) {
-  if (typeof x !== "number" || typeof y !== "number") {
-    throw new Error("x or y is not a number.");
-  } else {
-    return x + y;
-  }
-};
+//Require the dev-dependencies
+var chai = require("chai");
+var chaiHttp = require("chai-http");
+var server = require("../server");
+var should = chai.should();
 
-describe("Multiply", function() {
-  it("should multiply properly when passed numbers", function() {
-    expect(multiply(2, 4)).to.equal(8);
-  });
+chai.use(chaiHttp);
 
-  it("should throw when not passed numbers", function() {
-    expect(function() {
-      multiply(2, "4");
-    }).to.throw(Error);
+describe("/GET /api/examples", function() {
+  it("it should GET all the examples", function(done) {
+    chai
+      .request(server)
+      .get("/api/examples")
+      .end(function(err, res) {
+        res.should.have.status(200);
+        res.body.should.be.a("array");
+        res.body.length.should.be.eql(0);
+        done();
+      });
   });
 });
+
