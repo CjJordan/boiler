@@ -6,6 +6,8 @@ var chaiHttp = require("chai-http");
 var server = require("../server");
 var should = chai.should();
 
+should;
+
 chai.use(chaiHttp);
 
 describe("/GET /api/examples", function() {
@@ -18,8 +20,7 @@ describe("/GET /api/examples", function() {
         res.body.should.be.a("array");
         res.body.length.should.be.eql(0);
         done();
-        process.exit(0)
+        process.exit(0);
       });
   });
 });
-
