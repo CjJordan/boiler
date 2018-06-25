@@ -5,8 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
+    "lint": "eslint **/*.js --quiet",
     "fix": "eslint --fix .",
-    "test": "make test"
+    "test": "npm run lint && make test"
   },
   "license": "ISC",
   "dependencies": {
