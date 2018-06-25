@@ -7,6 +7,10 @@ chai.should();
 chai.use(chaiHttp);
 
 describe("/GET /api/examples", function() {
+  after(function() {
+    process.exit(0);
+  });
+
   it("it should GET all the examples", function(done) {
     chai
       .request(server)
@@ -16,7 +20,6 @@ describe("/GET /api/examples", function() {
         res.body.should.be.a("array");
         res.body.length.should.be.eql(0);
         done();
-        process.exit(0);
       });
   });
 });
