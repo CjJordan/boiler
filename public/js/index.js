@@ -74,7 +74,8 @@ var handleFormSubmit = function(event) {
     return;
   }
 
-  API.saveExample(example).then(function() {
+  API.saveExample(example).then(function(data) {
+    console.log("data", data);
     refreshExamples();
   });
 
